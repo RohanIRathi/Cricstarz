@@ -12,8 +12,6 @@
                 <a href="{% url 'autodelete' auto.id %}">Delete</a>) <br/>
                 {{ auto.comments }} ({{ auto.mileage }} miles) {% endcomment %}
             </li>
-          {% else %}
-              <li>No tournaments avilable.</li>
         {% endif %}
     {% endfor %}
   </ul>
