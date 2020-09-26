@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import View, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import *
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
+
+from .models import *
 
 from bootstrap_datepicker_plus import DateTimePickerInput
 
