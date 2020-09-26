@@ -8,7 +8,7 @@ from .models import *
 
 from bootstrap_datepicker_plus import DateTimePickerInput
 
-class TournamentListView(View):
+class TournamentListView(LoginRequiredMixin, View):
     def get(self, request):
         tl = Tournament.objects.all().filter(user=self.request.user)
 
