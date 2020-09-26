@@ -3,6 +3,7 @@ from django.views.generic import View, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import *
 from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 
 from bootstrap_datepicker_plus import DateTimePickerInput
 
@@ -13,10 +14,11 @@ class TournamentListView(View):
         ctx = {'tournament_list': tl}
         return render(request, 'tournament/tournament_list.html', ctx)
 
-class TournamentCreateView(LoginRequiredMixin, CreateView):
+class TournamentCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Tournament
     fields = ['name', 'no_of_overs', 'no_of_teams', 'start_date_time', 'end_date_time', 'venue',]
     success_url = reverse_lazy('tournaments:all')
+    success_message = "Tournament Created!!"
     
     def get_form(self):
          form = super().get_form()
