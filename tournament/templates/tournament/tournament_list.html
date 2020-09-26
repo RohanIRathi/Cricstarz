@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Tournament List</h1>
+  {% if tournament_list %}
+  <ul class="list-group">
+    {% for tournament in tournament_list %}
+        {% if user.username == tournament.user.username %}
+            <li class="list-group-item list-group-item-action">
+                {{ tournament.name }} ({{ tournament.venue }})
+                {% comment %} (<a href="{% url 'autoupdate' tournament.id %}">Update</a> |
+                <a href="{% url 'autodelete' auto.id %}">Delete</a>) <br/>
+                {{ auto.comments }} ({{ auto.mileage }} miles) {% endcomment %}
+            </li>
+          {% else %}
+              <li>No tournaments avilable.</li>
+        {% endif %}
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no tournaments available.</p>
+  {% endif %}
+  {% comment %} <p>
+  <a href="{% url 'makeall' %}">View makes</a> ({{ make_count }}) |
+    <a href="{% url 'makecreate' %}">Add a make</a>
+  </p> {% endcomment %}
+{% endblock %}
