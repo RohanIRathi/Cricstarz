@@ -6,7 +6,7 @@
   <ul class="list-group">
     {% for tournament in tournament_list %}
         {% if user.username == tournament.user.username %}
-            <li class="list-group-item list-group-item-action">
+            <li class="list-group-item list-group-item-action" onclick="window.location.href='{% url 'tournaments:detail' tournament.id %}'">
                 {{ tournament.name }} ({{ tournament.venue }})
                 {% comment %} (<a href="{% url 'autoupdate' tournament.id %}">Update</a> |
                 <a href="{% url 'autodelete' auto.id %}">Delete</a>) <br/>

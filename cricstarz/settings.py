@@ -31,6 +31,9 @@ ALLOWED_HOSTS = ['*',]
 # Application definition
 
 INSTALLED_APPS = [
+    'teams.apps.TeamsConfig',
+    'players.apps.PlayersConfig',
+    'matchs.apps.MatchsConfig',
     'tournament.apps.TournamentConfig',
     'home.apps.HomeConfig',
     'crispy_forms',
