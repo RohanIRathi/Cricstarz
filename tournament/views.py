@@ -44,7 +44,7 @@ class TournamentDetailView(DetailView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['match_list'] = Match.objects.all()
+        context['match_list'] = Match.objects.filter(tournament=kwargs.get('object'))
         context['teamscount'] = Team.objects.filter(tournament=kwargs.get('object')).count()
         print(context.get('teamscount'), context.get('tournament.no_of_teams'))
         return context

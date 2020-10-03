@@ -8,7 +8,7 @@ class TeamCreateView(CreateView):
     model = Team
     fields = ['name', 'no_of_players']
     success_url = reverse_lazy('tournaments:all')
-    success_message = "Tournament Created!!"
+    success_message = "Team Created!!"
     
     def get_form(self):
          form = super().get_form()

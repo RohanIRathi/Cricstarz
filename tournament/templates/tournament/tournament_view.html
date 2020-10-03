@@ -14,7 +14,7 @@
                         {{ match.team1.name }} vs {{ match.team2.name }}
                     </td>
                     <td>
-                        {% if match.winner %}
+                        {% if match.winner and match.winner == match.team1 or match.winner == match.team1 %}
                             {{ match.winner.name }}
                         {% else %}
                             TBD
@@ -28,6 +28,7 @@
             {% if teamscount < tournament.no_of_teams %}
                 <button class="btn btn-primary" onclick="window.location.href='{% url 'teams:addteam' tournament.id %}'">Add Team ({{ teamscount }}/{{ tournament.no_of_teams }})</button>
             {% endif %}
+                <button class="btn btn-primary" style="float: right;" onclick="window.location.href='{% url 'match:addmatch' tournament.id %}'">Add Match</button>
         </div>
     </div>
 

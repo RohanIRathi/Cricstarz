@@ -6,7 +6,7 @@ class Match(models.Model):
     team1 = models.ForeignKey(Team, on_delete=models.PROTECT, related_name="team1")
     team2 = models.ForeignKey(Team, on_delete=models.PROTECT, related_name="team2")
     tournament = models.ForeignKey(Tournament, on_delete=models.PROTECT)
-    winner = models.ForeignKey(Team, on_delete=models.PROTECT, related_name="winner")
+    winner = models.ForeignKey(Team, on_delete=models.PROTECT, related_name="winner", null=True)
     
     def __str__(self):
         return self.team1.name + " vs " + self.team2.name
