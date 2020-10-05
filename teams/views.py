@@ -6,7 +6,7 @@ from tournament.models import Tournament
 
 class TeamCreateView(CreateView):
     model = Team
-    fields = ['name', 'no_of_players']
+    fields = ['name']
     success_url = reverse_lazy('tournaments:all')
     success_message = "Team Created!!"
     

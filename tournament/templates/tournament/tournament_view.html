@@ -29,6 +29,9 @@
                 <button class="btn btn-primary" onclick="window.location.href='{% url 'teams:addteam' tournament.id %}'">Add Team ({{ teamscount }}/{{ tournament.no_of_teams }})</button>
             {% endif %}
                 <button class="btn btn-primary" style="float: right;" onclick="window.location.href='{% url 'match:addmatch' tournament.id %}'">Add Match</button>
+            {% if playercount < tournament.no_of_players %}
+                <button class="btn btn-primary" onclick="window.location.href='{% url 'players:addplayer' tournament.id %}'">Add Player ({{ playercount }}/{{ tournament.no_of_players }})</button>
+            {% endif %}
         </div>
     </div>
 

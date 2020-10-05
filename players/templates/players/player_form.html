@@ -1,0 +1,19 @@
+{% extends 'menu.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{{ form.media }}
+<form
+  method="post"
+  id="upload_form"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %} {{ form|crispy }}
+  <div class="form-group">
+    <button class="btn btn-outline-info" type="submit">Create</button>
+    <input class="btn btn-danger" type="submit" onclick="window.location='{% url 'tournaments:all' %}' ; return false;" value="Cancel" />
+  </div>
+</form>
+{% endblock content %}

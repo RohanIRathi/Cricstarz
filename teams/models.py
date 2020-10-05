@@ -9,7 +9,6 @@ class Team(models.Model):
     wides = models.IntegerField(verbose_name="Total Wides Thrown by Team", default=0)
     noballs = models.IntegerField(verbose_name="Total No Balls by Team", default=0)
     matcheswon = models.IntegerField(verbose_name="Total Matches Won by Team", default=0)
-    no_of_players = models.IntegerField(verbose_name="No of Players")
     
     tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE)
     

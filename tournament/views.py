@@ -9,6 +9,7 @@ from .models import *
 from bootstrap_datepicker_plus import DateTimePickerInput
 from matchs.models import Match
 from teams.models import Team
+from players.models import Player
 
 class TournamentListView(LoginRequiredMixin, View):
     def get(self, request):
@@ -19,7 +20,7 @@ class TournamentListView(LoginRequiredMixin, View):
 
 class TournamentCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Tournament
-    fields = ['name', 'no_of_overs', 'no_of_teams', 'start_date_time', 'end_date_time', 'venue',]
+    fields = ['name', 'no_of_overs', 'no_of_teams', 'no_of_players', 'start_date_time', 'end_date_time', 'venue',]
     success_url = reverse_lazy('tournaments:all')
     success_message = "Tournament Created!!"
     
@@ -46,5 +47,5 @@ class TournamentDetailView(DetailView):
         # Add in a QuerySet of all the books
         context['match_list'] = Match.objects.filter(tournament=kwargs.get('object'))
         context['teamscount'] = Team.objects.filter(tournament=kwargs.get('object')).count()
-        print(context.get('teamscount'), context.get('tournament.no_of_teams'))
+        context['playercount'] = Player.objects.filter(tournament=kwargs.get('object')).count()
         return context
